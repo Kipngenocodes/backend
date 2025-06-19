@@ -18,6 +18,9 @@ app.get('/dashboard', (req, res) => {
   res.send('Welcome to the Dashboard!');
 });
 // API endpoint: They are used to define the URL paths that the server will respond to JSON requests.
+// non-visual aspect of the code
+
+// CRUD Create -post, Read-get, Update - post, Delete -delete
 
 app.listen(PORT, () => {
   console.log(`Server is running on: ${PORT}`);
