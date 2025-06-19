@@ -5,11 +5,19 @@
 const express = require('express');
 const app = express();
 const PORT = 8383
+
+// website endpoint: They are used to define the URL paths that the server will respond to html requests.
 // HTTP VERBS && Routes (paths or endpoints)
 app.get('/', (req, res) => {
-  console.log('Hello, There has been change in the server.js file since the last commit.', req.method);
-    res.sendStatus(201);
+  res.send("<h1>Welcome to the Home Page!</h1><input/>");
 });
+
+// Rouute to handle the dashboard
+app.get('/dashboard', (req, res) => {
+  console.log('Dashboard accessed');
+  res.send('Welcome to the Dashboard!');
+});
+// API endpoint: They are used to define the URL paths that the server will respond to JSON requests.
 
 app.listen(PORT, () => {
   console.log(`Server is running on: ${PORT}`);
