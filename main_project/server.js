@@ -15,7 +15,13 @@ data = {
 // website endpoint: They are used to define the URL paths that the server will respond to html requests.
 // HTTP VERBS && Routes (paths or endpoints)
 app.get('/', (req, res) => {
-  res.send("<h1>Welcome to the Home Page!</h1>");
+  res.send(
+  `
+  <body>
+  <p>${JSON.stringify(data)}</p>
+  </body>
+  `
+  )
 });
 
 // Rouute to handle the dashboard

@@ -3,3 +3,6 @@ GET  http://localhost:8383
 
 ### Test GET / Dashboard
 GET  http://localhost:8383/dashboard
+
+### Data Endpoint
+GET  http://localhost:8383/api/data
