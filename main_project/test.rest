@@ -1,2 +1,5 @@
 ### Test  GET / Request
-GET / http://localhost:8383
+GET  http://localhost:8383
+
+### Test GET / Dashboard
+GET  http://localhost:8383/dashboard
