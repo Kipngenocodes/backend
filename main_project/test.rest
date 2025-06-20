@@ -6,3 +6,13 @@ GET  http://localhost:8383/dashboard
 
 ### Data Endpoint
 GET  http://localhost:8383/api/data
+
+### Test POST /api/data
+POST http://localhost:8383/api/data
+Content-Type: application/json
+
+{
+    "name": "Kipngetich Ngeno",
+    "age": 30,
+    "occupation": "Electrical Engineer"
+}
