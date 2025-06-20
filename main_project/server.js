@@ -9,23 +9,14 @@ const PORT = 8383
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-data = { 
-  name: "John Doe",
-  age: 30,
-  occupation: "Software Engineer"
-};
+let data = ['James Rodriguez']
 
 // website endpoint: They are used to define the URL paths that the server will respond to html requests.
 // HTTP VERBS && Routes (paths or endpoints)
 app.get('/', (req, res) => {
   res.send(
   `
-  <h1>Welcome to My Website</h1>
-  <p>This is a simple server using Express.js</p>
-  <p>Click <a href="/dashboard">here</a> to go to the dashboard.</p>
-  <p>Click <a href="/api/data">here</a> to see the API data.</p>
-  <p>Click <a href="/json">here</a> to see the JSON data.</p>
-  
+
   <body>
   <p>${JSON.stringify(data)}</p>
   </body>
@@ -49,6 +40,7 @@ app.post('/api/data', (req, res) => {
   // someone wants to create a user in  server
   const new_data = req.body;
   console.log("Data created:", new_data);
+  data.push(new_data.name); // Assuming data is an array
   res.sendStatus(201); // Created
   
 });
