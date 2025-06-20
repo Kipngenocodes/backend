@@ -6,7 +6,7 @@ const express = require('express');
 const app = express();
 const PORT = 8383
 
-data = {
+data = { 
   name: "John Doe",
   age: 30,
   occupation: "Software Engineer"
