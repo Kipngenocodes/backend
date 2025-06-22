@@ -16,3 +16,6 @@ Content-Type: application/json
     "age": 30,
     "occupation": "Electrical Engineer"
 }
+
+### Delete Endpoint
+DELETE http://localhost:8383/api/data
