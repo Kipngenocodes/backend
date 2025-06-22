@@ -44,6 +44,14 @@ app.post('/api/data', (req, res) => {
   res.sendStatus(201); // Created
   
 });
+
+// Route to handle the delete request
+app.delete('/api/data', (req, res) => {
+  // someone wants to delete a user in server
+  data.pop(); // Remove the last element from the array
+  console.log("Data deleted");
+  res.sendStatus(204); // No Content
+});
 app.listen(PORT, () => {
   console.log(`Server is running on: ${PORT}`);
 });
