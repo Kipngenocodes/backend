@@ -2,6 +2,8 @@ import express from 'express';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
+// import userRoutes from './routes/userRoutes.js';
+import todoAppRoutes from './routes/todoRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 5003;
@@ -25,6 +27,8 @@ app.get('/', (req, res) => {
 
 // Routes 
 app.use ('/auth', authRoutes);
+// app.use('/users', userRoutes);
+app.use('/todos', todoAppRoutes);
 
 // Start the server
 app.listen(PORT, () => {
