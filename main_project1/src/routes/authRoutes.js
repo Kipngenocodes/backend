@@ -1,9 +1,12 @@
 import express from 'express';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from '../db';
+import db from '../db.js ';
 
 
 const router = express.Router();
 
-export default router;
+router.post('/register',(req, res) => {})
+router.post('/login', (req, res) => {})
+
+export default router; 
