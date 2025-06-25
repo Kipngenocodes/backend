@@ -21,3 +21,5 @@ CREATE TABLE IF NOT EXISTS todos (
     FOREIGN KEY (user_id) REFERENCES users(id)
 )
 `);
+
+export default db;
