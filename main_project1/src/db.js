@@ -6,8 +6,8 @@ const db = new DatabaseSync(':memory:');
 db.exec(`
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
+    username TEXT UNIQUE,
+    password TEXT
 )
 `);
 
@@ -16,8 +16,8 @@ db.exec(`
 CREATE TABLE IF NOT EXISTS todos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
-    title TEXT NOT NULL,
-    completed BOOLEAN NOT NULL DEFAULT 0,
+    task TEXT ,
+    completed BOOLEAN  DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id)
 )
 `);
