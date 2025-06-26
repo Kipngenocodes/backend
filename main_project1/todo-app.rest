@@ -2,6 +2,9 @@
 GET http://localhost:5003
 
 ###
+# Post request endpoint to register a new user on auth/register
+# The request body should contain the username and password in JSON format
+# The response will contain a success message or an error message
 POST http://localhost:5003/auth/register
 Content-Type: application/json
 
@@ -12,3 +15,16 @@ Content-Type: application/json
 }
 
 ###
+# Post request endpoint to login a user on auth/login
+# The request body should contain the username and password in JSON format
+# The response will contain a success message or an error message
+# If the login is successful, it will return a token that can be used for subsequent requests
+# The token should be included in the Authorization header for protected routes
+POST http://localhost:5003/auth/login
+Content-Type: application/json
+
+
+{
+    "username": "gilgamesh@gmail.com",
+    "password": "12345678"
+}
