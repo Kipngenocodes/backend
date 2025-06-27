@@ -56,13 +56,30 @@ router.post('/login', (req, res) => {
         // If user does not exist, send a 404 Not Found status
         if (!user) {
             return res.status(404).send({message : 'User not found'});
+
         }
+        // Compare the provided password with the hashed password in the database
+        const isPasswordValid = bcrypt.compareSync(password, user.password);
+        // If the password is invalid, send a 401 Unauthorized status
+        if (!isPasswordValid) {
+            return res.status(401).send({message: 'Invalid password'});
+        }
+        // Then we have a successful login
+        // Create a JWT token for the user
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: 86400 // 24 hours
+        }); // expires in 24 hours
+        // Send the token back to the client
+        res.json({token});
 
     } catch (err) {
         console.log(err.message);
         // If there is an error, send a 503 Service Unavailable status
         res.sendStatus(503);
     }
+
+
+    
 })
 
 
