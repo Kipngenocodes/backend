@@ -45,6 +45,25 @@ router.post('/register',(req, res) => {
 })
 // Login endpoint for existing users
 // This endpoint will authenticate the user and return a JWT token
-router.post('/login', (req, res) => {})
+router.post('/login', (req, res) => {
+    const {username, password} = req.body;
+
+    try{
+        // Fetch the user from the database
+        const getUser = db.prepare("SELECT * FROM users WHERE username = ?");
+        const user = getUser.get(username);
+
+        // If user does not exist, send a 404 Not Found status
+        if (!user) {
+            return res.status(404).send({message : 'User not found'});
+        }
+
+    } catch (err) {
+        console.log(err.message);
+        // If there is an error, send a 503 Service Unavailable status
+        res.sendStatus(503);
+    }
+})
+
 
 export default router; 
