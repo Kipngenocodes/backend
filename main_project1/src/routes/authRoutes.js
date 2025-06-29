@@ -64,6 +64,8 @@ router.post('/login', (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).send({message: 'Invalid password'});
         }
+        // Output the user details for debugging
+        console.log(user);
         // Then we have a successful login
         // Create a JWT token for the user
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {

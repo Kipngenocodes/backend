@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 // Routes 
 app.use ('/auth', authRoutes);
 // app.use('/users', userRoutes);
-app.use('/todos', todoAppRoutes);
+app.use('/todos', authMiddleware, todoAppRoutes);
 
 // Start the server
 app.listen(PORT, () => {
