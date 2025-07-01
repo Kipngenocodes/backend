@@ -32,3 +32,14 @@ Content-Type: application/json
 
 ### Fetch all todos for the authenticated user
 GET http://localhost:5003/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+
+
+### Post a new todo for the authenticated user
+POST http://localhost:5003/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+Content-Type: application/json
+
+{
+    "task": "Complete the project documentation"
+}
