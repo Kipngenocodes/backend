@@ -28,3 +28,7 @@ Content-Type: application/json
     "username": "gilgamesh@gmail.com",
     "password": "12345678"
 }
+
+
+### Fetch all todos for the authenticated user
+GET http://localhost:5003/todos
