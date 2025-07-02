@@ -1,0 +1,59 @@
+### Get /
+GET http://localhost:5003
+
+###
+# Post request endpoint to register a new user on auth/register
+# The request body should contain the username and password in JSON format
+# The response will contain a success message or an error message
+POST http://localhost:5003/auth/register
+Content-Type: application/json
+
+
+{
+    "username": "gilgamesh@gmail.com",
+    "password": "12345678"
+}
+
+###
+# Post request endpoint to login a user on auth/login
+# The request body should contain the username and password in JSON format
+# The response will contain a success message or an error message
+# If the login is successful, it will return a token that can be used for subsequent requests
+# The token should be included in the Authorization header for protected routes
+POST http://localhost:5003/auth/login
+Content-Type: application/json
+
+
+{
+    "username": "gilgamesh@gmail.com",
+    "password": "12345678"
+}
+
+
+### Fetch all todos for the authenticated user
+GET http://localhost:5003/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
+
+
+### Post a new todo for the authenticated user
+POST http://localhost:5003/todos
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
+Content-Type: application/json
+
+{
+    "task": "Complete the project documentation"
+}
+
+### Update a todo for the authenticated user(protected authorization)
+PUT http://localhost:5003/todos/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
+Content-Type: application/json
+
+{
+    "task": "Complete the project documentation and review",
+    "completed": 1
+}
+
+### Delete a todo for the authenticated user(protected authorization)
+DELETE  http://localhost:5003/todos/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
