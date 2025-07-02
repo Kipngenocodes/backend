@@ -32,12 +32,12 @@ Content-Type: application/json
 
 ### Fetch all todos for the authenticated user
 GET http://localhost:5003/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
 
 
 ### Post a new todo for the authenticated user
 POST http://localhost:5003/todos
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
 Content-Type: application/json
 
 {
@@ -46,10 +46,14 @@ Content-Type: application/json
 
 ### Update a todo for the authenticated user(protected authorization)
 PUT http://localhost:5003/todos/1
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
 Content-Type: application/json
 
 {
     "task": "Complete the project documentation and review",
     "completed": 1
 }
+
+### Delete a todo for the authenticated user(protected authorization)
+DELETE  http://localhost:5003/todos/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxNDMyMDkxLCJleHAiOjE3NTE1MTg0OTF9.p2dAPV7uofBi29owXDewoFS1wDCotRRSZxtvidjQJ0s
