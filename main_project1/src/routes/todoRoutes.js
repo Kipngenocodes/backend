@@ -21,7 +21,16 @@ router.post('/', (req, res) => {
 }) 
 
 // Update a todo for a user
-router.put('/:id', (req, res) => {})
+router.put('/:id', (req, res) => {
+    const  {completed } = req.body;
+    const { id} = req.params;
+    const {page} = req.query;
+    const updateTodo = db.prepare("UPDATE todos SET completed = ? WHERE id = ?");
+    updateTodo.run( completed, id);
+    res.json({message: "Todo updated successfully"});
+
+
+})
 
 // Delete a todo for a user
 router.delete('/:id', (req, res) => {});

@@ -43,3 +43,13 @@ Content-Type: application/json
 {
     "task": "Complete the project documentation"
 }
+
+### Update a todo for the authenticated user(protected authorization)
+PUT http://localhost:5003/todos/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUxMzYyMTA4LCJleHAiOjE3NTE0NDg1MDh9.HDbN48llMzepm-nfKikre8PBlXqQQgikYQGKzI6cMEU
+Content-Type: application/json
+
+{
+    "task": "Complete the project documentation and review",
+    "completed": 1
+}
