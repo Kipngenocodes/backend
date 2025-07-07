@@ -1,7 +1,7 @@
 {
-  "name": "main_project1",
+  "name": "main_project2",
   "version": "1.0.0",
-  "description": "A todo application with JWT user authentication using Node.js, Express, and SQLite.",
+  "description": "A todo application with JWT user authentication using Node.js, Express, postgresql database, a prisma, and JWT authentication.",
   "main": "index.js",
   "type": "module",
   "scripts": {
