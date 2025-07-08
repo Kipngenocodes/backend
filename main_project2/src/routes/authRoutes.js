@@ -51,13 +51,16 @@ router.post('/register', async (req, res) => {
 })
 // Login endpoint for existing users
 // This endpoint will authenticate the user and return a JWT token
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res) => {
     const {username, password} = req.body;
 
     try{
         // Fetch the user from the database
-        const getUser = db.prepare("SELECT * FROM users WHERE username = ?");
-        const user = getUser.get(username);
+        const user = await prisma.user.findUnique({
+            where: {
+                username: username
+            }
+        });
 
         // If user does not exist, send a 404 Not Found status
         if (!user) {
