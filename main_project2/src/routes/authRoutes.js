@@ -6,7 +6,7 @@ import db from '../db.js ';
 
 const router = express.Router();
 // Register a new user endpoint
-router.post('/register',(req, res) => {
+router.post('/register', async (req, res) => {
     const {username, password} = req.body;
 
 // Encrypt the password using bcrypt
@@ -17,18 +17,24 @@ router.post('/register',(req, res) => {
 
     // Insert the new user into the database
     try{
-        const insert_user = db.prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        const result = insert_user.run(username, hashedPassword);
+        const user = await prisma.user.create({
+            data: {
+                username: username,
+                password: hashedPassword
+            }
+        });
 
         // create a default todo for the user
         const Default_todo = 'Hello :) this is your first todo!';
-        const insert_todo = db.prepare("INSERT INTO todos (user_id, task) VALUES (?, ?)");
+        await prisma.todo.create({
+            data: {
+                task: Default_todo,
+                userId: user.id // Assuming the user model has an id field
+            }
+        });
 
-        // Insert the default todo for the user
-        insert_todo.run(result.lastInsertRowid, Default_todo);
-        
         // create a JWT token for the user
-        const token = jwt.sign({ id: result.lastInsertRowid}, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: result.user.id}, process.env.JWT_SECRET, {
             expiresIn: 86400 // 24 hours
         }); // expires in 24 hours
 
