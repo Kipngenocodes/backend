@@ -1,8 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import db from '../db.js ';
-
+import prisma from '../prismaClient.js'; // Importing Prisma client
 
 const router = express.Router();
 // Register a new user endpoint
