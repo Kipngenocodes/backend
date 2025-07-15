@@ -1,6 +1,6 @@
 services:
-  mainproject2:
-    image: mainproject2
+  main_project2:
+    image: main_project2
     build:
       context: main_project2
       dockerfile: ./Dockerfile
