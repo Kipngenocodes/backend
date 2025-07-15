@@ -8,3 +8,4 @@ services:
       NODE_ENV: production
     ports:
       - 5003:5003
+      
