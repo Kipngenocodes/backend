@@ -1,0 +1,10 @@
+services:
+  mainproject2:
+    image: mainproject2
+    build:
+      context: main_project2
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5003:5003

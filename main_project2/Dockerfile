@@ -1,21 +1,10 @@
-# Use Node.js 22 for stability
-FROM node:22
-
-# Set working directory
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json .
-
-# Install dependencies
-RUN npm install
-
-# Copy Prisma schema and generate client
-COPY prisma ./prisma
-RUN npx prisma generate
-
-# Copy the rest of the application
+FROM node:lts-alpine
+ENV NODE_ENV=production
+WORKDIR /usr/src/app
+COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
+RUN npm install --production --silent && mv node_modules ../
 COPY . .
-
-# Start the application
-CMD ["npm", "start"]
+EXPOSE 5003
+RUN chown -R node /usr/src/app
+USER node
+CMD ["node", "server.js"]
