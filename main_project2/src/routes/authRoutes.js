@@ -18,7 +18,7 @@ router.post('/register', async (req, res) => {
     try{
         const user = await prisma.user.create({
             data: {
-                username: username,
+                username,
                 password: hashedPassword
             }
         });
@@ -33,7 +33,7 @@ router.post('/register', async (req, res) => {
         });
 
         // create a JWT token for the user
-        const token = jwt.sign({ id: result.user.id}, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: user.id}, process.env.JWT_SECRET, {
             expiresIn: 86400 // 24 hours
         }); // expires in 24 hours
 
