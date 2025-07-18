@@ -6,7 +6,7 @@ import prisma from '../prismaClient.js'; // Importing Prisma client
 const router = express.Router();
 // Register a new user endpoint
 router.post('/register', async (req, res) => {
-    const {username, password} = req.body;
+    const {username, password} = req.body;  
 
 // Encrypt the password using bcrypt
     const hashedPassword = bcrypt.hashSync(password, 8);
@@ -61,7 +61,8 @@ router.post('/login', async (req, res) => {
             }
         });
 
-        // If user does not exist, send a 404 Not Found status
+        // If user does not exist, send a 404 Not Found status which vital for security
+        // to prevent information leakage
         if (!user) {
             return res.status(404).send({message : 'User not found'});
 

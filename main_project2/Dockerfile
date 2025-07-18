@@ -1,11 +1,21 @@
+# Use the official Node.js image
 FROM node:22-alpine
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json .
+
+# Install dependencies which are necessary for building the application
+RUN npm install 
+
+# Copy the rest of the application code
 COPY . .
+
+# Expose the port the app runs on
 EXPOSE 5003
-RUN chown -R node /usr/src/app
-USER node
-CMD ["node", "srver.js"]
-                 
+
+# Define the command to run the application
+CMD ["node", "./src/server.js"]
+
